@@ -37,7 +37,7 @@ export const loadProtos = async () => {
     await Promise.all(protoFiles.map((file) => root.load(file)));
 
     for (const [packageName, types] of Object.entries(packetNames)) {
-      console.log(`🤪 ~ file: loadProtos.js:40 ~ loadProtos ~ packageName:`, packageName);
+      // console.log(`🤪 ~ file: loadProtos.js:40 ~ loadProtos ~ packageName:`, packageName);
       protoMessages[packageName] = {};
       for (const [type, typeName] of Object.entries(types)) {
         protoMessages[packageName][type] = root.lookupType(typeName);
@@ -52,6 +52,6 @@ export const loadProtos = async () => {
 
 //데이터가 변조될 가능성을 최대한 줄이기위해 얕은복사로 복사한 데이터를 가져다 쓸꺼임
 export const getProtoMessages = () => {
-  console.log(`🤪 ~ file: loadProtos.js:55 ~ getProtoMessages ~ protoMessages:`, protoMessages);
+  // console.log(`🤪 ~ file: loadProtos.js:55 ~ getProtoMessages ~ protoMessages:`, protoMessages);
   return { ...protoMessages }; //원본을 복사한 객체
 };

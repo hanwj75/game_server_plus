@@ -4,7 +4,7 @@ import { SQL_QUERIES } from "./user.queries.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const findUserByDeviceId = async (deviceId) => {
-  const [rows] = await pools.USER_DB.query(SQL_QUERIES.FIND_USER_BY_DEVICE_ID);
+  const [rows] = await pools.USER_DB.query(SQL_QUERIES.FIND_USER_BY_DEVICE_ID, [deviceId]);
   return toCamelCase(rows[0]); //여기서 스네이크케이스로 온 값을 카멜케이스로 감싸줌
 };
 

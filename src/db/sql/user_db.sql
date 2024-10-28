@@ -15,3 +15,5 @@ CREATE TABLE IF NOT EXISTS game_end
     score      INT       DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
+
+##테이블 추가가 필요할시 여기 추가

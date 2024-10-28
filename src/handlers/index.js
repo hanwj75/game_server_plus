@@ -1,0 +1,28 @@
+import { HANDLER_IDS } from "../constants/handlerIds.js";
+import CustomError from "../utils/error/customError.js";
+import { ErrorCodes } from "../utils/error/errorCodes.js";
+import initialHandler from "./user/initial.handler.js";
+
+const handlers = {
+  [HANDLER_IDS.INITIAL]: {
+    handler: initialHandler,
+    protoType: "initial.InitialPacket",
+  },
+};
+
+export const getHandlerById = (handlerId) => {
+  if (!handlers[handlerId]) {
+    throw new CustomError(ErrorCodes.UNKNOWN_HANDLER_ID, `핸들러 없음 : ID${handlerId}`);
+  }
+  return handlers[handlerId].handler;
+};
+
+export const getProtoTypeNameByHandlerId = (handlerId) => {
+  if (!handlers[handlerId]) {
+    throw new CustomError(
+      ErrorCodes.UNKNOWN_HANDLER_ID,
+      `프로토타입을 찾을 수 없음 : ID ${handlerId}`,
+    );
+  }
+  return handlers[handlerId].protoType;
+}; //핸들러ID를 가지고 ProtoType의 이름을 조회하는 함수

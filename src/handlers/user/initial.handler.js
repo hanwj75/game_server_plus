@@ -1,5 +1,6 @@
 import { HANDLER_IDS, RESPONSE_SUCCESS_CODE } from "../../constants/handlerIds.js";
 import { createUser, findUserByDeviceId, updateUserLogin } from "../../db/user/user.db.js";
+import { addUser } from "../../session/user.session.js";
 import { handlerError } from "../../utils/error/errorHandler.js";
 import { createResponse } from "../../utils/response/createResponse.js";
 

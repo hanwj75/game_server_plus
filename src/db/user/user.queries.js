@@ -1,3 +1,5 @@
+//유저 쿼리 세팅
+
 export const SQL_QUERIES = {
   FIND_USER_BY_DEVICE_ID: "SELECT * FROM user WHERE device_id = ?",
   CREATE_USER: "INSERT INTO user (id,device_id) VALUES(?,?)",

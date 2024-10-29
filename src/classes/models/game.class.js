@@ -7,7 +7,7 @@ class Game {
     this.state = "waiting"; //'waiting'과 'inProgress' 의 2가지 상태값을 가지도록
   }
 
-  addUser() {
+  addUser(user) {
     if (this.users.length >= MAX_PLAYERS) {
       throw new Error(`최대인원수임`);
     }

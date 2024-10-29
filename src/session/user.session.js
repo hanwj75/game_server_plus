@@ -13,6 +13,11 @@ export const removeUser = (socket) => {
     return userSessions.splice(index, 1)[0];
   }
 }; //유저 삭제
+export const getUserById = (id) => {
+  return userSessions.find((user) => user.id === id);
+};
+
+//유저 조회
 
 export const getNextSequence = (id) => {
   const user = getUserById(id);
@@ -21,9 +26,3 @@ export const getNextSequence = (id) => {
   }
   return null;
 };
-
-export const getUserById = (id) => {
-  return userSessions.find((user) => {
-    user.id === id;
-  });
-}; //유저 조회

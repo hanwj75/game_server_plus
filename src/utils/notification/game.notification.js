@@ -12,6 +12,29 @@ const makeNotification = (message, type) => {
   return Buffer.concat([packetLength, packetType, message]);
 };
 
+//게임 알림 3-16
+
+//위치 동기화
+export const createLocationPacket = (user) => {
+  const protoMessages = getProtoMessages();
+  const Location = protoMessages.gameNotification.LocationUpdate;
+
+  const payload = { users };
+  const message = Location.create(payload);
+  const locationPacket = Location.encode(message).finish();
+  return makeNotification(locationPacket, PACKET_TYPE.LOCATION);
+};
+//게임 시작 패킷
+export const gameStartNotification = (gameId, timestamp) => {
+  const protoMessages = getProtoMessages();
+  const Start = protoMessages.gameNotification.Start;
+
+  const payload = { gameId, timestamp };
+  const message = Location.create(payload);
+  const startPacket = Location.encode(message).finish();
+  return makeNotification(startPacket, PACKET_TYPE.GAME_START);
+};
+
 export const createPingPacket = (timestamp) => {
   const protoMessages = getProtoMessages();
   const ping = protoMessages.common.Ping;

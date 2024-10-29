@@ -61,7 +61,7 @@ client.connect(PORT, HOST, async () => {
   console.log("Connected to server");
   await loadProtos();
 
-  const successPacket = createPacket(0, { loginId: "xxxxx" }, "1.0.0", "initial", "InitialPacket");
+  const successPacket = createPacket(0, { deviceId: "xxxxx" }, "1.0.0", "initial", "InitialPacket");
 
   sendPacket(client, successPacket);
 });

@@ -32,6 +32,7 @@ const joinGameHandler = ({ socket, userId, payload }) => {
       { gameId, message: "게임에 참가함" },
       user.id,
     );
+    socket.write(joinGameResponse);
   } catch (err) {
     handlerError(socket, err);
   }

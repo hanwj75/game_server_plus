@@ -24,12 +24,13 @@ class User {
   ping() {
     const now = Date.now();
 
-    console.log(`[${this.id}] ping`);
+    console.log(`보내는거 [${this.id}] ping`);
     this.socket.write(createPingPacket(now));
   }
   handlePong(data) {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
+    console.log(`받는거 pong from 유저어쩌구 ${this.id} at ${now} 레이턴시:${this.latency}`);
   }
 }
 

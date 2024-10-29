@@ -56,6 +56,16 @@ class Game {
       user.socket.write(startPacket);
     });
   } // 게임 시작
+
+  getAllLocation() {
+    const maxLatency = this.getMaxLatency();
+
+    const locationData = this.users.map((user) => {
+      const { x, y } = user.calcuatePosition(maxLatency);
+      return { id: user.id, x, y };
+    });
+    return createLocationPacket(locationData);
+  }
 }
 
 export default Game;

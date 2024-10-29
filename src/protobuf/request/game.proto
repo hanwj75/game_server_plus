@@ -5,3 +5,8 @@ package game;
 message CreateGamePayload {
     int64 timestamp = 1;
 }
+
+message JoinGamePayload{
+    string gameId = 1;
+    int64 timestamp =2;
+}

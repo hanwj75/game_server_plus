@@ -1,3 +1,4 @@
+import { gameStartNotification } from "../../utils/notification/game.notification.js";
 import IntervalManager from "../managers/interval.manager.js";
 
 const MAX_PLAYERS = 4;
@@ -39,8 +40,21 @@ class Game {
     }
   } // 유저 삭제
 
+  getMaxLatency() {
+    let maxLatency = 0;
+    this.users.forEach((user) => {
+      maxLatency = Math.max(maxLatency, user.latency);
+    });
+    return maxLatency;
+  }
+
   startGame() {
     this.state = "inProgress"; //게임이 시작하면 상태값을 게임중으로 바꿈
+    const startPacket = gameStartNotification(this.id, Date.now());
+
+    this.users.forEach((user) => {
+      user.socket.write(startPacket);
+    });
   } // 게임 시작
 }
 

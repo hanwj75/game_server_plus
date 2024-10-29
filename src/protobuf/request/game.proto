@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package game;
+
+message CreateGamePayload {
+    int64 timestamp = 1;
+}

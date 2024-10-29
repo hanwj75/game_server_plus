@@ -21,7 +21,7 @@ class Game {
     }
   } // 유저 생성
 
-  getuser(userId) {
+  getUser(userId) {
     return this.users.find((user) => user.id === userId);
   } // 유저 조회
 

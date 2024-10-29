@@ -10,7 +10,7 @@ const testDbConnection = async (pool, dbName) => {
 const testAllConnection = async (pools) => {
   await testDbConnection(pools.GAME_DB, "GAME_DB");
   await testDbConnection(pools.USER_DB, "USER_DB");
-  await testDbConnection(pools.LOG_DB, "LOG_DB");
+  // await testDbConnection(pools.LOG_DB, "LOG_DB");
 };
 
 export { testDbConnection, testAllConnection };

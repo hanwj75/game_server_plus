@@ -4,6 +4,7 @@ class Game {
   constructor(id) {
     this.id = id;
     this.users = [];
+    this.intervalManager = new intervalManager();
     this.state = "waiting"; //'waiting'과 'inProgress' 의 2가지 상태값을 가지도록
   }
 
@@ -13,6 +14,8 @@ class Game {
     }
     this.users.push(user);
     //유저의 수가 최대치라면 일정시간후 자동으로 게임이 시작되게 하는 로직
+
+    this.intervalManager.addPlayer(user.id, user.ping.bind(user), 1000);
 
     if (this.users.length === MAX_PLAYERS) {
       setTimeout(() => {
@@ -27,7 +30,7 @@ class Game {
 
   removeUser(userId) {
     this.users = this.users.filter((user) => user.id !== userId);
-
+    this.intervalManager.removePlayer(userId);
     //게임 시작중 유저가 나가거나 쫒겨날 경우 상태값을 다시 대기중으로 변경
     if (this.users.length < MAX_PLAYERS) {
       this.state = "waiting";

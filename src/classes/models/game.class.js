@@ -1,10 +1,12 @@
+import IntervalManager from "../managers/interval.manager.js";
+
 const MAX_PLAYERS = 4;
 
 class Game {
   constructor(id) {
     this.id = id;
     this.users = [];
-    this.intervalManager = new intervalManager();
+    this.intervalManager = new IntervalManager();
     this.state = "waiting"; //'waiting'과 'inProgress' 의 2가지 상태값을 가지도록
   }
 

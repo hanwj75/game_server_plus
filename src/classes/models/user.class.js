@@ -8,7 +8,6 @@ class User {
     this.y = 0;
     this.sequence = 0;
     this.lastUpdateTime = Date.now();
-    this.latency = 0;
   }
   updatePostion(x, y) {
     this.x = x;
@@ -24,13 +23,13 @@ class User {
   ping() {
     const now = Date.now();
 
-    console.log(`보내는거 [${this.id}] ping`);
+    console.log(`[${this.id}] ping`);
     this.socket.write(createPingPacket(now));
   }
   handlePong(data) {
     const now = Date.now();
     this.latency = (now - data.timestamp) / 2;
-    console.log(`받는거 pong from 유저어쩌구 ${this.id} at ${now} 레이턴시:${this.latency}`);
+    console.log(`pong from 유저어쩌구 ${this.id} at ${now} 레이턴시:${this.latency}`);
   }
 
   caculatePosition(latency) {

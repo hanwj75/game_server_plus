@@ -1,7 +1,8 @@
+import User from "../classes/models/user.class.js";
 import { userSessions } from "./sessions.js";
 
 export const addUser = (socket, uuid) => {
-  const user = { socket, id: uuid, sequence: 0 };
+  const user = new User(uuid, socket);
   userSessions.push(user);
   return user;
 }; //유저 추가
@@ -16,7 +17,7 @@ export const removeUser = (socket) => {
 export const getNextSequence = (id) => {
   const user = getUserById(id);
   if (user) {
-    return ++user.sequence; //sequence가 0을 보내줌으로 리턴해주기전에 +1해서 리턴해줘야함
+    return getNextSequence(); //sequence가 0을 보내줌으로 리턴해주기전에 +1해서 리턴해줘야함
   }
   return null;
 };
